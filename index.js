@@ -35,7 +35,7 @@ app.get('/', (req, res, next) => {
 
 
 app.get('/artists', (req, res, next) => {
-  console.log( 'artist is', req.query.input )
+  console.log( 'input is', req.query.input )
   console.log( 'type is', req.query.type )
   
   if ( req.query.type === "album" )
@@ -67,7 +67,7 @@ app.get('/artists', (req, res, next) => {
       .searchArtists(req.query.input)
       .then( data =>
       {
-          res.render('artists',  {artists: data.body.artists.items, artist: req.query.artist});
+          res.render('artists',  {artists: data.body.artists.items, artist: req.query.input});
       })
       .catch(err => {
           console.log("The error while searching artists occurred: ", err);
